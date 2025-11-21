@@ -1,0 +1,431 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>منتجاتنا — رداء الجمال</title>
+
+  <style>
+    :root{
+      --bg: #f7edde;       /* بيج فاتح */
+      --bg2: #efdfc8;      /* بيج أغمق قليلاً */
+      --card: #ffffff;
+      --muted: #8a6a4a;    /* بني فاتح */
+      --accent: #4a341f;   /* بني غامق */
+      --shadow: rgba(0,0,0,0.1);
+      --btn-bg: #4a341f;   
+      --btn-text: #fff;
+      --btn-hover-bg: #392914; /* بني أغمق عند التمرير */
+      font-family: "Tajawal", sans-serif;
+    }
+
+    body{
+      margin:0;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      color: var(--accent);
+    }
+
+    .wrap{
+      max-width:1000px;
+      margin:40px auto;
+      padding:20px;
+    }
+
+    /* -------- الهيدر -------- */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:30px;
+      padding-top:10px;
+    }
+
+    /* كلمة منتجاتنا على الشمال */
+    .page-title{
+      font-size:26px;
+      font-weight:700;
+      color:var(--accent);
+    }
+
+    /* زر العودة على اليمين */
+    .back-home{
+      background:var(--btn-bg);
+      color:var(--btn-text);
+      padding:10px 16px;
+      border-radius:12px;
+      font-size:14px;
+      font-weight:600;
+      text-decoration:none;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      transition: background 0.3s ease;
+    }
+    .back-home:hover{
+      background: var(--btn-hover-bg);
+    }
+
+    /* -------- شبكة المنتجات -------- */
+    .products-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:25px;
+    }
+
+    .product-card{
+      background:var(--card);
+      border-radius:16px;
+      padding:15px;
+      text-align:center;
+      box-shadow:8px 12px 28px var(--shadow);
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover{
+      transform: translateY(-5px);
+    }
+
+    /* ************** */
+    /* ملاحظة: تم إزالة التنسيق الخاص بالصور المباشرة */
+    /* لأن جميع المنتجات الآن تستخدم الـ slider */
+    /* ************** */
+    /* .product-card > img {
+      ...
+    } */
+
+
+    /* تنسيق آلة عرض الصور داخل بطاقة المنتج - جديد */
+    .image-slider {
+      position: relative; /* لتثبيت موقع الأزرار */
+      width: 100%;
+      overflow: hidden; /* لإخفاء الصور غير النشطة - هذا هو مفتاح عدم ظهور المربع طويلاً */
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .image-slider img {
+      width: 100%;
+      display: none; /* إخفاء جميع الصور مبدئياً */
+      border-radius: 12px;
+      object-fit: cover; 
+    }
+
+    .image-slider img.active {
+      display: block; /* إظهار الصورة النشطة فقط */
+    }
+
+    /* تنسيق أزرار التنقل - جديد */
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 5px;
+      box-sizing: border-box;
+    }
+
+    .slider-btn {
+      background: rgba(74, 52, 31, 0.7); /* لون بني شبه شفاف */
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 50%;
+      font-size: 14px;
+      line-height: 1;
+      z-index: 10;
+      transition: background 0.3s;
+    }
+
+    .slider-btn:hover {
+      background: var(--accent);
+    }
+
+/* زر اطلب الآن */
+    .order-btn{
+      display:block;
+      width:100%;
+      text-align:center;
+      background:var(--btn-bg);
+      color:var(--btn-text);
+      padding:10px 0;
+      border-radius:12px;
+      font-weight:600;
+      text-decoration:none;
+      margin-top:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      font-size:15px;
+      transition: background 0.3s ease;
+    }
+    .order-btn:hover{ 
+      background: var(--btn-hover-bg);
+    }
+footer{
+      text-align:center;
+      margin-top:40px;
+      color:var(--muted);
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrap">
+<header>
+      <div class="page-title">منتجاتنا</div>
+      <a href="index.html" class="back-home">العودة إلى الصفحة الرئيسية</a> </header>
+
+    <div class="products-grid">
+
+      <div class="product-card" data-product-id="1">
+        <div class="image-slider">
+          <img src="images/kajar kuaytiun (1).jpg" alt="طرحة كاجار كويتي" class="active">
+          <img src="images/kajar kuaytiun (2).jpg" alt="طرحة كاجار كويتي ">
+          <img src="images/kajar kuaytiun (3).jpg" alt="طرحة كاجار كويتي ">
+          <img src="images/kajar kuaytiun (4).jpg" alt="طرحة كاجار كويتي ">
+
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>طرحة كاجار كويتي </h3>
+        <p>خامة كويتي ناعمة ومريحة </p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+
+      <div class="product-card" data-product-id="2">
+        <div class="image-slider">
+          <img src="images/hijab.jpg.jpg" alt="طرحة شيفون لفوال" class="active">
+          <img src="images/hijab1.jpg.jpg" alt="طرحة شيفون لفوال">
+          <img src="images/hijab2.jpg.jpg" alt="طرحة شيفون لفوال">
+          <img src="images/hijab3.jpg.jpg" alt="طرحة شيفون لفوال">
+
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>طرحة شيفون لفوال</h3>
+        <p>خامة روعة</p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+
+      <div class="product-card" data-product-id="3">
+        <div class="image-slider">
+          <img src="images/Khimar (4).jpg" alt="خمار الماليزي" class="active">
+          <img src="images/Khimar (3).jpg" alt="خمار الماليزي">
+          <img src="images/Khimar (2).jpg" alt="خمار الماليزي">
+          <img src="images/Khimar (1).jpg" alt="خمار الماليزي">
+          
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>خمار الماليزي</h3>
+        <p>خامة مريحة طولة 150*150</p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+
+      <div class="product-card" data-product-id="4">
+        <div class="image-slider">
+          <img src="images/photo (1).jpg" alt="كويتي بالبندانة" class="active">
+          <img src="images/photo (2).jpg" alt="كويتي بالبندانة">
+          <img src="images/photo (3).jpg" alt="كويتي بالبندانة">
+          <img src="images/photo (4).jpg" alt="كويتي بالبندانة">
+          <img src="images/photo (5).jpg" alt="كويتي بالبندانة">
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>كويتي بالبندانة</h3>
+        <p>طرحة 200*75 +بندانة </p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+      
+      <div class="product-card" data-product-id="5">
+        <div class="image-slider">
+          <img src="images/niqab maliun (1).jpg" alt="طقم نقاب " class="active">
+          <img src="images/niqab maliun (2).jpg" alt="'طقم نقاب">
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>طقم نقاب ماليزي</h3>
+        <p>خمار ماليزي 150*150 +نقاب من نفس الخامة ونفس لون</p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+      <div class="product-card" data-product-id="7">
+        <div class="image-slider">
+          <img src="images/plain model (4).jpg" alt="مودال سادة لفوال " class="active">
+          <img src="images/plain model (3).jpg" alt="مودال سادة لفوال ">
+          <img src="images/plain model (2).jpg" alt="مودال سادة لفوال ">
+          <img src="images/plain model (1).jpg" alt="مودال سادة لفوال ">
+          <img src="images/plain model.jpg" alt="مودال سادة لفوال ">
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>مودال سادة لفوال </h3>
+        <p>خامة ناعمة وبرند لفوال </p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+
+      <div class="product-card" data-product-id="7">
+        <div class="image-slider">
+          <img src="images/kwby ayma (1).jpg" alt="مودال مشجر لفوال " class="active">
+          <img src="images/kwby ayma (2).jpg" alt="مودال مشجر لفوال ">
+          <img src="images/kwby ayma (3).jpg" alt="مودال مشجر لفوال ">
+          <img src="images/kwby ayma (4).jpg" alt="مودال مشجر لفوال ">
+          <img src="images/kwby ayma (5).jpg" alt="مودال مشجر لفوال ">
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>مودال مشجر لفوال </h3>
+        <p>خامة ناعمة ومريحة برند لفوال 200*75</p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+
+      <div class="product-card" data-product-id="8">
+        <div class="image-slider">
+          <img src="images/marwa.jpg" alt="معصم صباع" class="active">
+          <img src="images/photo_٢٠٢٥-١١-١٨_١٣-٣٠-٤١ (2).jpg" alt="معصم صباع">
+          <img src="images/photo_٢٠٢٥-١١-١٨_١٣-٣٠-٤١.jpg" alt="معصم صباع">
+          <img src="images/photo_٢٠٢٥-١١-١٨_١٣-٣٠-٤٠.jpg"alt="معصم صباع">
+
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>معصم صباع </h3>
+        <p>معصم صباع قطن اجود خامات </p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+
+      <div class="product-card" data-product-id="9">
+        <div class="image-slider">
+          <img src="images/Malaysian Khimar (1).jpg" alt="خمار ماليزي ديجتال" class="active">
+          <img src="images/Malaysian Khimar (2).jpg" alt="خمار ماليزي ديجتال">
+          <img src="images/Malaysian Khimar (3).jpg" alt="خمار ماليزي ديجتال">
+          <img src="images/Malaysian Khimar (4).jpg" alt="خمار ماليزي ديجتال">
+          <img src="images/Malaysian Khimar (5).jpg" alt="خمار ماليزي ديجتال">
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>خمار ماليزي ديجتال</h3>
+        <p>خمار ديجيتال 150*150</p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+
+      <div class="product-card" data-product-id="10">
+        <div class="image-slider">
+          <img src="images/qutn bialbandana (1).jpg" alt="طرحة قطن بالبندانة" class="active">
+          <img src="images/qutn bialbandana (2).jpg" alt="طرحة قطن بالبندانة">
+          <img src="images/qutn bialbandana (3).jpg" alt="طرحة قطن بالبندانة">
+          <img src="images/qutn bialbandana (4).jpg" alt="طرحة قطن بالبندانة">
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>طرحة قطن بالبندانة</h3>
+        <p>طرحة قطن 200*75 بالبندانة برند لفوال</p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+      <div class="product-card" data-product-id="7">
+        <div class="image-slider">
+          <img src="images/kamfurd (1).jpg" alt="طرحة كمفورت" class="active">
+          <img src="images/kamfurd (2).jpg" alt="طرحة كمفورت">
+          <img src="images/kamfurd (3).jpg" alt="طرحة كمفورت">
+          <img src="images/kamfurd (4).jpg" alt="طرحة كمفورت">
+          <img src="images/kamfurd (5).jpg" alt="طرحة كمفورت">
+          <div class="slider-nav">
+            <button class="slider-btn prev-btn">❮</button>
+            <button class="slider-btn next-btn">❯</button>
+          </div>
+        </div>
+        <h3>طرحة كمفورت </h3>
+        <p>خامة عالية الجودة 200*75</p>
+        <a href="https://m.me/842186685645233?source=qr_link_share" class="order-btn">اطلب الآن</a>
+      </div>
+
+    </div>
+
+    <footer>
+      © جميع الحقوق محفوظة — رداء الجمال
+    </footer>
+
+  </div>
+
+  <script>
+    // وظيفة لتهيئة وتشغيل آلة عرض الصور لبطاقة منتج واحدة
+    function setupProductSlider(productCard) {
+      const slider = productCard.querySelector('.image-slider');
+      // إذا لم يكن هناك شريط تمرير (هيكل الـ image-slider)، لا تفعل شيئاً
+      if (!slider) return; 
+      
+      const images = slider.querySelectorAll('img');
+      const prevBtn = productCard.querySelector('.prev-btn');
+      const nextBtn = productCard.querySelector('.next-btn');
+      let currentImageIndex = 0;
+      
+      // إذا كان هناك صورة واحدة فقط، لا داعي للأزرار
+      if (images.length <= 1) {
+          const nav = productCard.querySelector('.slider-nav');
+          if (nav) nav.style.display = 'none'; // إخفاء الأزرار
+          images[0].classList.add('active'); // عرض الصورة الوحيدة
+          return;
+      }
+      
+      // تهيئة: تحديث عرض الصورة النشطة
+      function updateSlider() {
+        images.forEach((img, index) => {
+          img.classList.remove('active');
+          if (index === currentImageIndex) {
+            img.classList.add('active');
+          }
+        });
+      }
+// الانتقال للصورة التالية
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateSlider();
+      });
+
+      // الانتقال للصورة السابقة
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        updateSlider();
+      });
+
+      // البحث عن الصورة النشطة لتحديد الفهرس المبدئي
+      images.forEach((img, index) => {
+          if (img.classList.contains('active')) {
+              currentImageIndex = index;
+          }
+      });
+      updateSlider(); 
+    }
+
+    // تطبيق الوظيفة على جميع بطاقات المنتجات
+    document.querySelectorAll('.product-card').forEach(card => {
+        setupProductSlider(card);
+    });
+
+  </script>
+
+</body>
+</html>
